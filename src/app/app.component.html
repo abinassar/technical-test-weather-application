@@ -1,0 +1,12 @@
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" 
+             size = "default" 
+             color = "#fff" 
+             type = "square-jelly-box" 
+             name="full-screen-spinner"
+             [fullScreen] = "true">
+             <p style="color: white" > 
+                {{ loadingService.loadingMessage | translate}} 
+            </p>
+</ngx-spinner>
+<router-outlet></router-outlet>

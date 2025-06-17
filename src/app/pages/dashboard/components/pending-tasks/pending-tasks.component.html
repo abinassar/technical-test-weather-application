@@ -1,0 +1,90 @@
+
+<mat-card class="card-height">
+    <mat-card-title>
+        <strong>
+            Tareas Pendientes
+        </strong>
+    </mat-card-title>
+    <mat-card-content>
+
+        <form [formGroup]="tasksForm"
+              fxLayout="row"
+              fxLayoutGap="10px"
+              [ngStyle]="{'font-size': '9px'}">
+
+            <mat-form-field appearance="outline"
+                            fxFlex="200px">
+                <mat-label>{{'PENDING_TASK' | translate}}</mat-label>
+                <input type="text"
+                        placeholder="{{'TASK_EXAMPLE' | translate}}"
+                        matInput
+                        formControlName="task">
+
+                <button *ngIf="taskControl && taskControl?.value !== ''" 
+                        matSuffix 
+                        mat-icon-button 
+                        aria-label="Clear" 
+                        (click)="taskControl.setValue('')">
+                    <img src="assets/icons/close.svg"
+                        width="20px"
+                        class="mt-m10">                            
+                </button>
+                
+            </mat-form-field>
+
+            <button mat-raised-button
+                    color="primary"
+                    class="small-button"
+                    (click)="addTask()"
+                    [disabled]="taskControl && taskControl?.value === ''">
+                {{'ADD' | translate}}
+            </button>
+
+        </form>
+        <ng-container *ngIf="pendingTasks.length > 0; else noPending">
+
+            <div class="pending-tasks-container">
+
+                <div *ngFor="let pendingTask of pendingTasks; let i=index"
+                     fxLayout="row"
+                     fxLayoutAlign="start center"
+                     fxLayoutGap="10px"
+                     class="pending-task">
+
+                    <div [ngClass]="{
+                        'point-green': pendingTask.completed === true,
+                        'point-warning': pendingTask.completed === false
+                        }"
+                        fxFlex="10px"></div>
+    
+                    <span fxFlex="calc(100% - 200px)">{{pendingTask.taskName}}</span>
+
+                    <button fxFlex
+                            class="complete-button"
+                            (click)="completeTask(i)"
+                            *ngIf="!pendingTask.completed">{{'COMPLETE' | translate}}</button>
+
+                    <button fxFlex
+                            class="complete-button"
+                            (click)="deleteTask(i)">{{'DELETE' | translate}}</button>
+
+                </div>
+                
+            </div>
+
+            
+        </ng-container>
+        <ng-template #noPending>
+
+            <div class="empty-pending">
+                <p>
+                    {{'NO_PENDING_TASKS' | translate}}
+                </p>
+            </div>
+
+            
+        </ng-template>
+        
+    
+    </mat-card-content>
+</mat-card>

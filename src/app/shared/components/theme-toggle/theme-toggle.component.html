@@ -1,0 +1,6 @@
+<div class="theme-button-container"
+     (click)="toggle()"
+     [ngClass]="{'shadow-dark': iconPath === moonPath,
+                 'shadow-light': iconPath === sunPath}">
+  <img id="theme-icon" [src]="iconPath" alt="ERR">
+</div>

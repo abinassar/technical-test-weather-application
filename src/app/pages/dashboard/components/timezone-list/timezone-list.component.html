@@ -1,0 +1,57 @@
+
+<mat-card class="card-height">
+    <mat-card-title fxLayout="row"
+                    fxLayoutGap="5px">
+        <strong>
+            {{'TIME_ZONES_AVAILABLES' | translate}}
+        </strong>
+        
+    </mat-card-title>
+
+    <ng-container *ngIf="timeZoneList || locationTimeZone; else emptyTimeZone">
+
+        <!-- Columns -->
+        <mat-card-content fxLayout="row"
+                          fxLayoutAlign="start start">
+
+            <div ngClass.lt-sm="registers-container"
+                 ngClass.gt-sm="registers-container-gt-sm"
+                 class="pointer time-zone">
+
+                 <ng-container *ngIf="timeZoneList; else useLocationTimeZone">
+                     
+                     <p *ngFor="let zone of timeZoneList.zones"
+                         (click)="getTimeZone(zone.zoneName)">
+                         {{zone.zoneName}}
+                     </p>
+
+                 </ng-container>
+                 <ng-template #useLocationTimeZone>
+
+                    <p (click)="getTimeZone(locationTimeZone?.zoneName)">
+                        {{locationTimeZone?.zoneName}}
+                    </p>
+                    
+                 </ng-template>
+
+
+            </div>
+
+        </mat-card-content>
+        
+    </ng-container>
+    <ng-template #emptyTimeZone>
+
+        <mat-card-content fxLayout="row"
+                          fxLayoutAlign="center center"
+                          class="w-100 h-100 mt-m20">
+        
+            <span class="fs-20px">
+                {{'SELECT_A_LOCATION' | translate}}
+            </span>
+        
+        </mat-card-content>
+        
+    </ng-template>
+        
+</mat-card>

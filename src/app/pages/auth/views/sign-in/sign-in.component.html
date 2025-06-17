@@ -1,0 +1,67 @@
+
+
+<div class="sign-in"
+     fxLayout="column"
+     fxLayoutAlign="space-between center">
+
+  <app-sign-header class="w-100"></app-sign-header>
+
+  <mat-card fxLayout="column"
+            fxLayoutAlign="center center"
+            [@fadeIn]>
+
+    <h1 class="bold" fxFlexAlign="start">{{'SIGN_TITLE' | translate}}</h1>
+
+    <form [formGroup]="signInForm"
+        fxLayout="column"
+        fxLayoutAlign="center start"
+        class="w-100">
+
+      <mat-form-field appearance="outline"
+                      class="w-100">
+        <mat-label>{{'EMAIL' | translate}}</mat-label>
+        <input maxlength="100" matInput type="text" formControlName="email">         
+      </mat-form-field>
+
+      <mat-form-field appearance="outline"
+                      class="w-100">
+        <mat-label>{{'PASSWORD' | translate}}</mat-label>
+        <input maxlength="100" matInput 
+               [type]="hidePassword ? 'password' : 'text'" 
+               formControlName="password">
+        <mat-icon
+          (click)="hidePassword = !hidePassword"
+          class="pointer"
+          matSuffix 
+        >
+          {{ hidePassword ? "visibility_off" : "visibility" }}
+        </mat-icon>          
+      </mat-form-field>
+
+      <ng-container *ngIf="!showSpinner; else loadSpinner">
+        <button
+          (click)="signIn()"
+          class="w-100 mt-15px"
+          color="primary"
+          mat-raised-button
+        >
+          {{'SIGN_IN' | translate}}
+        </button>
+      </ng-container>
+
+      <span class="register-title pointer"
+            (click)="goToRegister()">{{'NEED_ACCOUNT' | translate}}</span>
+
+      <ng-template #loadSpinner>
+        <span class="w-100" fxLayoutAlign="center center">
+          <mat-spinner *ngIf="showSpinner" [diameter]="30"></mat-spinner
+        ></span>
+      </ng-template>
+
+    </form>
+  </mat-card>
+
+  <app-sign-footer class="w-100"></app-sign-footer>
+
+</div>
+

@@ -1,0 +1,183 @@
+// ---------- Dark theme variables ---------------- //
+
+// Background variables
+
+$bgPrimary_dark: #111111;
+$bgSecondary_dark: #1b1b1b;
+$bgTerciary_dark: #3a3a3a;
+// $bgSearch_dark: #212226;
+$bgSearch_dark: #1c1c1eff;
+$bgSidenavItem_dark: #3a3a3a;
+$bgSidenavItemHover_dark: #575757;
+$bgToolbar_dark: #3a3a3a;
+$bgUserAccountPopup_dark: #3a3a3a;
+$bgSearchBox_dark: #575757;
+$bgUserPopUp_dark: #282A2C;
+$bgCardDashboard_dark: #2A2B2F;
+$bgCardDashboardHover_dark: #111111;
+
+// Text variables
+
+$textPrimary_dark: #ffffff;
+$textSecondary_dark: #9d9d9d;
+$textPrimaryHover_dark: #3a3a3a;
+
+// Icons variables
+
+$colorPrimary_dark: #f4f4f4;
+$googleHover_dark: #2F3034;
+
+// Border variables
+
+$borderPrimary_dark: #9d9d9d;
+$borderSecondary_dark: #242424;
+$borderTerciary_dark: #353535;
+
+// Angular material variables
+
+$borderFormField_dark: #9d9d9d;
+$formFieldPrimaryLabel_dark: #f4f4f4;
+$signMatCardPrimary_dark: #20232b;
+
+// Button variable
+
+$userPopUpButton_dark: #1B1B1B;
+$userPopUpButtonHover_dark: #37393B;
+
+// ---------- Light theme variables ---------------- //
+
+// Background variables
+
+$bgPrimary_light: #ffffff;
+// $bgSecondary_light: #f4f4f4;
+$bgSecondary_light: #ffffff;
+$bgTerciary_light: #d0d0d0;
+$bgSearch_light: #ffffff;
+$bgSidenavItem_light: #ffffff;
+$bgSidenavItemHover_light: #eee;
+$bgToolbar_light: #0093e1;
+$bgUserAccountPopup_light: #f4f4f4;
+$bgSearchBox_light: #f1f3f4;
+$bgUserPopUp_light: #e9eef6;
+$bgCardDashboard_light: #ffff;
+$bgCardDashboardHover_light: #dadada;
+
+// Text variables
+
+$textPrimary_light: #2a2a2a;
+$textSecondary_light: #3e3e3e;
+$textPrimaryHover_light: #3e3e3e;
+
+// Icons variables
+
+$colorPrimary_light: #2a2a2a;
+$googleHover_light: #dadada;
+
+// Border variables
+
+$borderPrimary_light: #2a2a2a;
+$borderSecondary_light: #c7c7c7;
+$borderTerciary_light: #E9EEF6;
+
+// Angular material variables
+
+$borderFormField_light: #c7c7c7;
+$formFieldPrimaryLabel_light: rgba(0, 0, 0, 0.6);
+$signMatCardPrimary_light: #ffffff;
+
+// Button variable 
+
+$userPopUpButton_light: #F8FAFD;
+$userPopUpButtonHover_light: #DCE1E8;
+
+
+// mixin that enables css variables in light mode
+@mixin lighten() {
+  // Background variables
+
+  --bgPrimaryColor: #{$bgPrimary_light};
+  --bgSecondaryColor: #{$bgSecondary_light};
+  --bgTerciaryColor: #{$bgTerciary_light};
+  --bgSearchColor: #{$bgSearch_light};
+  --bgSidenavItem: #{$bgSidenavItem_light};
+  --bgSidenavItemHover: #{$bgSidenavItemHover_light};
+  --bgToolbar: #{$bgToolbar_light};
+  --bgUserAccountPopup: #{$bgUserAccountPopup_light};
+  --bgSearchBox: #{$bgSearchBox_light};
+  --bgUserPopUp: #{$bgUserPopUp_light};
+  --bgCardDashboard: #{$bgCardDashboard_light};
+  --bgCardDashboardHover: #{$bgCardDashboardHover_light};
+
+  // Text variables
+
+  --textPrimaryColor: #{$textPrimary_light};
+  --textSecondaryColor: #{$textSecondary_light};
+  --textPrimaryHover: #{$textPrimaryHover_light};
+
+  // Icons variables
+
+  --iconColor: #{$colorPrimary_light};
+  --googleHoverColor: #{$googleHover_light};
+
+  // Border variables
+
+  --borderPrimaryColor: #{$borderPrimary_light};
+  --borderSecondaryColor: #{$borderSecondary_light};
+  --borderTerciaryColor: #{$borderTerciary_light};
+
+  // Angular material variables
+
+  --borderFormFieldColor: #{$borderFormField_light};
+  --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_light};
+  --bgSignInCard: #{$signMatCardPrimary_light};
+
+  //Button variable
+  --userPopUpButtonColor: #{$userPopUpButton_light};
+  --userPopUpButtonColorHover: #{$userPopUpButtonHover_light};
+}
+
+// mixin that enables css variables in dark mode
+@mixin darken() {
+  // Background variables
+
+  --bgPrimaryColor: #{$bgPrimary_dark};
+  --bgSecondaryColor: #{$bgSecondary_dark};
+  --bgTerciaryColor: #{$bgTerciary_dark};
+  --bgSearchColor: #{$bgSearch_dark};
+  --bgSidenavItem: #{$bgSidenavItem_dark};
+  --bgSidenavItemHover: #{$bgSidenavItemHover_dark};
+  --bgToolbar: #{$bgToolbar_dark};
+  --bgUserAccountPopup: #{$bgUserAccountPopup_dark};
+  --bgSearchBox: #{$bgSearchBox_dark};
+  --bgUserPopUp: #{$bgUserPopUp_dark};
+  --bgCardDashboard: #{$bgCardDashboard_dark};
+  --bgCardDashboardHover: #{$bgCardDashboardHover_dark};
+
+
+  // Text variables
+
+  --textPrimaryColor: #{$textPrimary_dark};
+  --textPrimaryHover: #{$textPrimaryHover_dark};
+  --textSecondaryColor: #{$textSecondary_dark};
+
+  // Icons variables
+
+  --iconColor: #{$colorPrimary_dark};
+  --googleHoverColor: #{$googleHover_dark};
+
+  // Border variables
+
+  --borderPrimaryColor: #{$borderPrimary_dark};
+  --borderSecondaryColor: #{$borderSecondary_dark};
+  --borderTerciaryColor: #{$borderTerciary_dark};
+
+  // Angular material variables
+
+  --borderFormFieldColor: #{$borderFormField_dark};
+  --formFieldPrimaryLabelColor: #{$formFieldPrimaryLabel_dark};
+  --bgSignInCard: #{$signMatCardPrimary_dark};
+
+  //Button variable
+  --userPopUpButtonColor: #{$userPopUpButton_dark};
+  --userPopUpButtonColorHover: #{$userPopUpButtonHover_dark};
+}

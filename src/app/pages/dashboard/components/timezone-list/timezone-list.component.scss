@@ -1,0 +1,40 @@
+:host ::ng-deep {
+    h1 {
+        margin: 0px;
+        margin-left: 5px;
+    }
+
+    h2 {
+        margin-bottom: 0px;
+    }
+
+}
+
+.card-height {
+    height: calc(100% - 21px)
+}
+
+.favorite-icon {
+    position: relative;
+    top: 1px;
+}
+
+.empty-container {
+    height: calc(100vh - 417px);
+}
+
+.registers-container-gt-sm {
+    height: calc(100vh - 451px);
+    overflow-y: auto;
+    width: 100%;
+}
+
+.registers-container {
+    height: 300px;
+}
+
+.time-zone p {
+    color: #0093e1 !important;
+    font-weight: bold;
+    margin-left: 20px;
+}

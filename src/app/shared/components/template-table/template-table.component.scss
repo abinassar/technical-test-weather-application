@@ -1,0 +1,37 @@
+
+:host ::ng-deep {
+
+    // Table styles
+
+    .mat-table {
+      background-color: var(--bgSignInCard) !important;  
+    }
+
+    .mat-paginator {
+      border-radius: 0px 0px 5px 5px;
+    }
+
+    table, .mat-paginator-container {
+      width: calc(100% - 16px);
+      border-collapse: collapse;
+      box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+      background-color: var(--bgSignInCard);
+    }
+
+    /*To remove the last border*/
+    table tr:last-child td {
+      border-bottom: 0 solid;
+    }
+
+    .mat-row {
+        border-bottom: 2px solid var(--bgSidenavItemHover) !important;
+        border-width: 80%;
+    }
+
+    .mat-paginator-page-size-label,
+    .mat-paginator-range-label,
+    .mat-select-arrow {
+      color: var(--textPrimaryColor);
+    }
+
+}

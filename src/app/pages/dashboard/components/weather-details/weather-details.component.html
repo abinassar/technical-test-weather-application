@@ -1,0 +1,136 @@
+
+<mat-card fxLayout="column"
+          fxLayoutAlign="space-between start"
+          class="p-20">
+
+    <div fxLayout="row"
+         fxLayoutAlign="space-between center"
+         class="w-100">
+
+        <div fxLayout="row"
+            fxLayoutGap="10px">
+    
+          <div>
+            <mat-card-title>
+              <strong>
+                {{'WEATHER' | translate}}
+              </strong>
+            </mat-card-title>
+            <mat-card-subtitle>
+                
+                {{locationWeather ? 
+                  locationWeather.location.name :
+                  ''}}
+            </mat-card-subtitle>
+          </div>
+    
+          <div class="v-big-separator" *ngIf="locationWeather"></div>
+    
+          <div fxLayout="column"
+              *ngIf="locationWeather">
+            
+            <span>
+              {{locationWeather.location.localtime}}
+            </span>
+    
+            <span>
+              {{locationWeather.current.condition.text}}
+            </span>
+            
+          </div>
+    
+        </div>
+
+        <!-- Datos de clima -->
+
+        <div fxLayout="row"
+             fxLayoutGap="5px"
+             *ngIf="locationWeather">
+
+          <img [src]="locationWeather.current.condition.icon"
+               width="70px">
+
+          <div fxLayout="column"
+               fxLayoutAlign="space-between end">
+
+            <!-- Temperatura e icono -->
+
+            <div fxLayout="row"
+                 fxLayoutGap="5px"
+                 fxLayoutAlign="center center"
+                 class="mt-10px">
+  
+              <div>
+  
+                <span class="fs-40px">
+                  {{locationWeather.current.temp_f}}
+                </span>
+                <span class="temp">
+                  F°
+                </span>
+  
+              </div>
+  
+              <div class="v-mid-separator"></div>
+  
+              <div>
+  
+                <span class="fs-40px">
+                  {{locationWeather.current.temp_c}}
+                </span>
+                <span class="temp">
+                  C°
+                </span>
+  
+              </div>
+            </div>
+
+            <!-- Estado del clima -->
+
+            <div fxLayout="column">
+
+              <span>
+                {{'WINDS_AT' | translate}} {{locationWeather.current.wind_mph}} mph
+              </span>
+
+              <span>
+                {{'HIMIDITY' | translate}} {{locationWeather.current.humidity}}%
+              </span>
+
+
+            </div>
+
+          </div>
+
+
+        </div>
+    </div>
+        
+    <mat-card-content fxLayout="row"
+                      fxLayoutAlign="center center"
+                      class="w-100 mt-minus-50px no-register"
+                      *ngIf="!locationWeather">
+    
+        <span class="fs-20px">
+          {{'SEARCH_A_CITY' | translate}}
+        </span>
+
+        <img src="assets/icons/world-search.svg"
+              width="40px">
+    
+    </mat-card-content>
+
+    <ng-container *ngIf="!locationWeather; else saveButtons">
+      <div></div>
+    </ng-container>
+    <ng-template #saveButtons>
+      <mat-card-actions *ngIf="locationWeather">
+        <button mat-stroked-button 
+                color="primary"
+                (click)="saveHistory()">
+          {{'SAVE_ON_HISTORY' | translate}}
+        </button>
+      </mat-card-actions>
+    </ng-template>
+    
+</mat-card>

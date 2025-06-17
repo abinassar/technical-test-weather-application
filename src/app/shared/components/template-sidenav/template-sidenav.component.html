@@ -1,0 +1,62 @@
+
+
+<div class="sidenav-container"
+     fxLayout="column"
+     fxLayoutAlign="start start"
+     fxLayoutGap="20px">
+
+          <h1 class="ml-20">
+                {{'MENU' | translate}}
+          </h1>
+
+    <div fxLayout="column"
+         fxLayoutAlign="start center"
+         fxLayoutGap="10px">
+            <div *ngFor="let menuItem of menuItems; let menuIndex = index"
+                 class="w-100">
+        
+                    <div class="nav-item"
+                         fxLayout="row"
+                         fxLayoutAlign="start center"
+                         fxLayoutGap="15px"
+                         [ngClass]="{'active': isActive(menuItem.path)}"
+                         (click)="navigate([menuItem.path])"
+                         *ngIf="menuItem.childrenLinks.length === 0"> 
+                            <i class="material-icons">{{menuItem.icon}}</i>
+                            <p>
+                                    {{menuItem.title | translate}}
+                            </p>
+                    </div>
+                    <mat-expansion-panel class="w-100"
+                                         *ngIf="menuItem.childrenLinks.length > 0">
+            
+                            <mat-expansion-panel-header [ngClass]="{'active': isActive(menuItem.path)}">
+                                    <mat-panel-title fxLayout="row"
+                                                    fxLayoutAlign="start center"
+                                                    fxLayoutGap="15px">
+                                            <i class="material-icons">{{menuItem.icon}}</i>
+                                            <p>
+                                                    {{menuItem.title | translate}}
+                                            </p>    
+                                    </mat-panel-title>
+                            </mat-expansion-panel-header>
+            
+                            <div class="nav-item mb-5"
+                                 fxLayout="row"
+                                 fxLayoutAlign="start center"
+                                 fxLayoutGap="15px"
+                                 [ngClass]="{'mt-10': childrenIndex === 0}"
+                                 (click)="navigate([menuItem.path, childrenLink.path])"
+                                 *ngFor="let childrenLink of menuItem.childrenLinks; let childrenIndex = index"> 
+                                    <p>
+                                            {{childrenLink.title}}
+                                    </p>
+                            </div>                
+                            
+                    </mat-expansion-panel>
+            </div>
+    </div>
+
+</div>
+
+

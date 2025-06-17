@@ -1,0 +1,47 @@
+.card-height {
+    height: calc(100% - 21px);
+}
+
+.pending-tasks-container {
+    height: calc(100vh - 382px);
+    overflow-y: auto;
+}
+
+.empty-pending {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.point-warning,
+.point-green {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.point-green {
+  background-color: #048000 !important;
+
+}
+
+.point-warning {
+  background-color: #e2b800 !important;
+}
+
+.pending-task {
+    padding: 5px;
+}
+
+.complete-button {
+    background-color: #0093e1;
+    flex: 1 1 0%;
+    box-sizing: border-box;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}

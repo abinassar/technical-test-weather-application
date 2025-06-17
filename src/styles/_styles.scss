@@ -1,0 +1,800 @@
+@use "@angular/material" as mat;
+
+// Angular Material styles settings
+
+@font-face {
+  font-family: "Arsenal", sans-serif;
+  src: url("../assets/fonts/Arsenal/Arsenal-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@include mat.core();
+$phk-turquoise-palette: (
+  50: #dff7ff,
+  100: #ace9fe,
+  200: #70dbfe,
+  300: #00ccff,
+  400: #00c0ff,
+  500: #00b4ff,
+  600: #00a6f4,
+  700: #0093e1,
+  800: #0081cd,
+  900: #0061ac,
+  A100: #c2e4ff,
+  A200: #addcff,
+  A400: #1f9eff,
+  A700: #00518f,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  ),
+);
+$phk-accent-palette: (
+  50: #f9f9fa,
+  100: #f3f3f4,
+  200: #ebebec,
+  300: #dcdcdd,
+  400: #b9b9ba,
+  500: #99999a,
+  600: #707071,
+  700: #5d5d5e,
+  800: #3e3e3f,
+  900: #1d1d1e,
+  A100: #f5f5f5,
+  A200: #eaeaeb,
+  A400: #d6d6d7,
+  A700: #838386,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: white,
+  ),
+);
+$phk-warn-palette: (
+  50: #ffebef,
+  100: #ffcdc5,
+  200: #f0999f,
+  300: #e77179,
+  400: #f24e58,
+  500: #f83a40,
+  600: #e9313e,
+  700: #d72638,
+  800: #ca1e30,
+  900: #bb0d24,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+$phk-primary: mat.define-palette($phk-turquoise-palette, 700, 300, 900);
+$phk-accent: mat.define-palette($phk-accent-palette, 300, 100, 500);
+$phk-warn: mat.define-palette($phk-warn-palette, 700);
+$phk-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $phk-primary,
+      accent: $phk-accent,
+      warn: $phk-warn,
+    ),
+  )
+);
+@include mat.all-component-themes($phk-theme);
+
+// Dark and Light theme settings
+
+@import "_variables";
+
+body.dark {
+  @include darken();
+}
+body.light {
+  @include lighten();
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px*/
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font: normal 16px/24px 'Arsenal', sans-serif;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  font-family: 'Arsenal', sans-serif !important;
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: 'Arsenal', sans-serif;
+
+  &:before {
+    box-sizing: inherit;
+  }
+
+  &:after {
+    box-sizing: inherit;
+  }
+}
+
+
+// Material global styles
+
+// Background of modal and font color
+
+.mat-dialog-container {
+  background: var(--bgSignInCard) !important;
+}
+
+.mat-input-element {
+  color: var(--textPrimaryColor) !important;
+}
+
+mat-card {
+  border: 1px solid #dadce0;
+  background: var(--bgSecondaryColor) !important;
+}
+
+.mat-typography h4,
+.mat-typography h5 {
+  color: var(--textPrimaryColor) !important;
+}
+
+//------------------ Angular material global styles -----------------
+
+/* Form field Border */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--borderFormFieldColor);
+}
+/* Font color */
+input.mat-input-element {
+  // color: var(--borderFormFieldColor);
+}
+
+// Labels styles to show white label in dark mode
+// and black label in light theme
+
+.mat-form-field-label,
+.mat-select-placeholder {
+  color: var(--formFieldPrimaryLabelColor);
+}
+
+.mat-icon {
+  color: var(--formFieldPrimaryLabelColor);
+}
+
+.mat-select-panel .mat-option,
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background-color: var(--bgSignInCard) !important;
+}
+
+.mat-card-title,
+.mat-card-header .mat-card-title {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.mat-card {
+  padding: 10px !important;
+}
+
+//------------------ Angular material global styles -----------------
+
+// global fonts styles
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: "Arsenal", sans-serif !important;
+  color: var(--textPrimaryColor);
+}
+
+.mat-simple-snackbar span {
+  color: white !important;
+}
+
+i {
+  color: var(--textPrimaryColor);
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+//----------------------- Leaflet ----------------------//
+
+// @import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+
+//-------------------- Scroll style --------------------//
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0061ac;
+}
+
+//-------------------- Scroll style --------------------//
+
+.h-100vh {
+  height: calc(100vh) !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.h-80 {
+  height: 80% !important;
+}
+
+.h-75 {
+  height: 75% !important;
+}
+
+.w-90 {
+  width: 90% !important;
+}
+
+.w-80 {
+  width: 80% !important;
+}
+
+.w-75 {
+  width: 75% !important;
+}
+
+.w-70 {
+  width: 70% !important;
+}
+
+.w-60 {
+  width: 60% !important;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+// Content styles
+
+.center-content {
+  margin: 0 auto !important;
+}
+
+// Position styles
+
+.p-relative {
+  position: relative !important;
+}
+
+// Pointer styles
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.disable-events {
+  pointer-events: none !important;
+}
+
+// Global font-sizes
+
+.fs-8-5 {
+  font-size: 8.5px !important;
+}
+
+.fs-12 {
+  font-size: 12px !important;
+}
+
+.fs-15 {
+  font-size: 15px !important;
+}
+
+.fs-18 {
+  font-size: 18px !important;
+}
+
+.fs-20 {
+  font-size: 20px !important;
+}
+
+.fs-17 {
+  font-size: 1.7rem !important;
+}
+
+.fs-25 {
+  font-size: 25px !important;
+}
+
+.fs-30 {
+  font-size: 30px !important;
+}
+
+.fs-40 {
+  font-size: 40px !important;
+}
+
+.fs-50 {
+  font-size: 50px !important;
+}
+
+.fs-5em {
+  font-size: 5em !important;
+}
+
+.fs-3em {
+  font-size: 3em !important;
+}
+
+.fs-09 {
+  font-size: 0.9em !important;
+}
+
+.fs-08 {
+  font-size: 0.8em !important;
+}
+
+.fs-07 {
+  font-size: 0.7em !important;
+}
+
+.fs-05 {
+  font-size: 0.5em !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+.fw-800 {
+  font-weight: 800 !important;
+}
+
+// Line-height styles
+
+.lh-0-8 {
+  line-height: 0.8 !important;
+}
+
+.lh-1-0 {
+  line-height: 1 !important;
+}
+
+.lh-1-2 {
+  line-height: 1.2 !important;
+}
+
+.lh-1-5 {
+  line-height: 1.5 !important;
+}
+
+// Opacity styles
+
+.opacity-04 {
+  opacity: 0.4 !important;
+}
+
+// Global Margins
+
+.m-0 {
+  margin: 0px !important;
+}
+
+.mb-0 {
+  margin-bottom: 0px !important;
+}
+
+.mt-2 {
+  margin-top: 2px !important;
+}
+
+.mt-5 {
+  margin-top: 5px !important;
+}
+
+.mt-10 {
+  margin-top: 10px !important;
+}
+
+.mt-20 {
+  margin-top: 20px !important;
+}
+
+.mt-50 {
+  margin-top: 5rem !important;
+}
+
+.mt-60 {
+  margin-top: 60px !important;
+}
+
+.mb-5 {
+  margin-bottom: 5px !important;
+}
+
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+.mb-20 {
+  margin-bottom: 20px !important;
+}
+
+.mb-35 {
+  margin-bottom: 35px !important;
+}
+
+.mr-5 {
+  margin-right: 5px !important;
+}
+
+.mr-10 {
+  margin-right: 10px !important;
+}
+
+.mr-15 {
+  margin-right: 15px !important;
+}
+
+.mr-20 {
+  margin-right: 20px !important;
+}
+
+.ml-10 {
+  margin-left: 10px !important;
+}
+
+.ml-20 {
+  margin-left: 20px !important;
+}
+
+.m-40 {
+  margin: 40px;
+}
+
+.mt-m3 {
+  margin-top: -3px !important;
+}
+
+.mt-m5 {
+  margin-top: -5px !important;
+}
+
+.mt-m10 {
+  margin-top: -10px !important;
+}
+
+.mt-m16 {
+  margin-top: -16px !important;
+}
+
+.mt-m20 {
+  margin-top: -20px !important;
+}
+
+.mt-m24 {
+  margin-top: -24px !important;
+}
+
+.mt-m150 {
+  margin-top: -150px !important;
+}
+
+// Padding
+
+.p-0 {
+  padding: 0px !important;
+}
+
+.p-10 {
+  padding: 10px !important;
+}
+
+.p-20 {
+  padding: 20px !important;
+}
+
+.p-40 {
+  padding: 40px !important;
+}
+
+.p-50 {
+  padding: 50px !important;
+}
+
+.ph-20 {
+  padding: 0px 20px;
+}
+
+.ph-50 {
+  padding: 0px 50px;
+}
+
+.pv-10 {
+  padding: 10px 0 !important;
+}
+
+.pv-20 {
+  padding: 20px 0 !important;
+}
+
+.pb-20 {
+  padding-bottom: 20px !important;
+}
+
+.pb-50 {
+  padding-bottom: 50px !important;
+}
+.pl-20 {
+  padding-left: 20px !important;
+}
+
+// Asimetric padding styles
+
+.pv0-h20 {
+  padding: 0px 20px !important;
+}
+
+.pv0-h15 {
+  padding: 0px 15px !important;
+}
+
+.pv10-h20 {
+  padding: 10px 20px !important;
+}
+
+.pv20-h40 {
+  padding: 20px 40px !important;
+}
+
+.pv20-h50 {
+  padding: 20px 50px !important;
+}
+
+// Text styles
+
+.text-center {
+  text-align: center;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+// Color styles
+
+.primary-color {
+  color: var(--textPrimaryColor);
+}
+
+.white {
+  color: white;
+}
+
+// Button styles
+
+.small-button {
+  height: 33px !important;
+  line-height: 24px !important;
+  margin-top: 2px !important;
+
+  .mat-icon {
+     width: 16px !important;
+     height: 16px !important;
+     line-height: 16px !important;
+  }
+  .material-icons {
+     font-size: 16px !important;
+  }
+}
+
+.material-shadow {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.simple-border-card {
+  padding-top: 15px;
+  border: 1px solid #dadce0;
+  background: var(--bgSignInCard);
+  border-radius: 5px;
+  min-height: 423px;
+}
+
+.stroked-button {
+  padding: 20px 25px;
+  color: #0081cd;
+  font-weight: 500;
+  transition: all 0.3s;
+  border-top: 1px solid #dadce0;
+  cursor: pointer;
+}
+
+.stroked-button:hover {
+  background-color: #fafafa;
+}
+
+.stroked-transparent-button {
+  padding: 10px 15px;
+  color: #2a2a2a;
+  font-weight: 500;
+  transition: all 0.3s;
+  border: 1px solid #dadce0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.stroked-transparent-button:hover {
+  background-color: #fafafa;
+}
+
+.stroked-button:hover {
+  background-color: #fafafa;
+}
+
+// Color of word in the button
+
+.mat-horizontal-stepper-header .mat-step-icon span,
+.mat-raised-button span,
+.mat-primary,
+.mat-flat-button.mat-primary span {
+  color: #fff !important;
+}
+
+.table-container {
+  height: calc(100vh - 150px);
+  width: 70%;
+  margin: 0 auto;
+}
+
+.timepicker-overlay {
+  z-index: 1100 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 1100 !important;
+}
+
+// ---------------- Hover CSS -----------------
+
+.grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.grow:hover,
+.grow:focus,
+.grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+// Animations styles
+
+// Pulse animation
+
+.pulse {
+  animation: pulse-animation 1s infinite;
+}
+
+// Pulse style
+
+@keyframes pulse-animation {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}

@@ -1,0 +1,134 @@
+
+
+<div class="sign-in"
+     fxLayout="column"
+     fxLayoutAlign="space-between center">
+
+  <app-sign-header class="w-100"></app-sign-header>
+
+  <mat-card fxLayout="column"
+            fxLayoutAlign="center start"
+            [@fadeIn]>
+
+    <h1 class="bold">{{'REGISTER' | translate}}</h1>
+
+    <form [formGroup]="registerForm"
+        fxLayout="column"
+        fxLayoutAlign="center start"
+        class="w-100">
+
+      <mat-form-field appearance="outline"
+                      class="w-100">
+        <mat-label>{{'NAME' | translate}}</mat-label>
+        <input matInput 
+               type="text" 
+               formControlName="name"
+               maxlength="100">  
+               
+        <mat-error *ngIf="nameControl?.hasError('required')">
+            {{'REQUIRED_FIELD' | translate}}            
+        </mat-error>               
+      </mat-form-field>
+
+      <div fxLayout="row"
+           fxLayoutGap="10px"
+           class="w-100">
+
+          <mat-form-field appearance="outline"
+                          fxFlex="calc(50% - 10px)">
+            <mat-label>{{'PASSWORD' | translate}}</mat-label>
+            <input matInput 
+                   [type]="hidePassword ? 'password' : 'text'" 
+                   formControlName="password"
+                   maxlength="100">
+            <mat-icon
+              (click)="hidePassword = !hidePassword"
+              class="pointer"
+              matSuffix 
+            >
+              {{ hidePassword ? "visibility_off" : "visibility" }}
+            </mat-icon>    
+
+            <mat-error *ngIf="passwordControl?.hasError('required')">
+                {{'REQUIRED_FIELD' | translate}}
+            </mat-error>
+            <mat-error *ngIf="passwordControl?.hasError('minlength')">
+                {{'MIN_LENGTH_PASSWORD' | translate}}
+            </mat-error>
+            <mat-error *ngIf="passwordControl?.hasError('maxlength')">
+                {{'MAX_LENGTH_PASSWORD' | translate}}
+            </mat-error>
+
+          </mat-form-field>
+    
+          <mat-form-field appearance="outline"
+                          fxFlex="calc(50% - 10px)">
+            <mat-label>{{'CONFIRM_PASSWORD' | translate}}</mat-label>
+            <input matInput 
+                   [type]="hidePassword ? 'password' : 'text'" 
+                   formControlName="confirmPassword"
+                   maxlength="100">
+            <mat-icon
+              (click)="hidePassword = !hidePassword"
+              class="pointer"
+              matSuffix 
+            >
+              {{ hidePassword ? "visibility_off" : "visibility" }}
+            </mat-icon>   
+            
+            <mat-error *ngIf="confirmPasswordControl?.hasError('confirmedValidator')">
+                {{'PASSWORD_MUST_MATCH' | translate}}
+            </mat-error>      
+            
+            <mat-error *ngIf="confirmPasswordControl?.hasError('required')">
+              {{'REQUIRED_FIELD' | translate}}
+            </mat-error>
+            
+          </mat-form-field>
+
+      </div>
+
+      <mat-form-field appearance="outline"
+                      class="w-100">
+        <mat-label>{{'EMAIL' | translate}}</mat-label>
+        <input matInput 
+               [type]="'text'" 
+               formControlName="email"
+               maxlength="100">
+
+        <mat-error *ngIf="emailControl?.hasError('required')">
+          {{'REQUIRED_FIELD' | translate}}
+        </mat-error>
+
+        <mat-error *ngIf="emailControl?.hasError('email')">
+          {{'INVALID_EMAIL' | translate}}
+        </mat-error>
+      </mat-form-field>
+
+      <span class="sign-in-title pointer"
+            (click)="goToSignIn()">{{'ALREADY_HAVE_ACCOUNT' | translate}}</span>
+
+      <ng-container *ngIf="!showSpinner; else loadSpinner">
+        <button
+          (click)="registerUser()"
+          class="w-100 mt-15px"
+          color="primary"
+          mat-raised-button
+          [disabled]="registerForm.invalid"
+        >
+          {{'REGISTER_USER' | translate}}
+        </button>
+      </ng-container>
+      <ng-template #loadSpinner>
+        <span class="w-100" fxLayoutAlign="center center">
+          <mat-spinner *ngIf="showSpinner" [diameter]="30"></mat-spinner
+        ></span>
+      </ng-template>
+
+    </form>
+  </mat-card>
+
+  <app-sign-footer class="w-100"></app-sign-footer>
+
+</div>
+

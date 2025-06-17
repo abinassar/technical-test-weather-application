@@ -1,0 +1,111 @@
+
+:host::ng-deep {
+  .mat-card {
+    width: 400px;
+    @media screen and (max-width: 667px) {
+      width: calc(80%);
+    }
+  }
+}
+
+.sign-in {
+  height: calc(100vh);
+  background-image: url("../../../../../assets/images/sign-in-background.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.welcome-title {
+  color: white;
+  font-size: 1.4rem;
+}
+
+.welcome-subtitle {
+  color: white;
+  font-size: 1rem;
+  text-align: justify;
+  padding: 0 10px;
+}
+
+.link-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-weight: bold;
+  color: #424242;
+  cursor: pointer;
+}
+
+.input-w-100 ::ng-deep {
+  .mat-form-field {
+    width: 100% !important;
+  }
+}
+
+.user-admin-container {
+  padding: 13px 10px;
+  margin: 10px 0 0 0;
+  border: 2px #a4a4a4 solid;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+:host {
+  &.ng-touched.ng-invalid {
+    ::ng-deep.mat-form-field-label {
+      color: #b00020;
+    }
+
+    ::ng-deep.mat-form-field-suffix {
+      color: #b00020;
+    }
+
+    ::ng-deep.mat-form-field-ripple {
+      background: #b00020;
+      width: 100%;
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    ::ng-deep.mat-form-field-outline-thick {
+      color: #b00020;
+      width: 100%;
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+}
+
+.terms-link {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.terms-container {
+  padding: 10px;
+  margin: 5px;
+  background-color: rgba($color: #272727, $alpha: 0.6);
+  border-radius: 5px;
+  width: 400px;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+
+  p {
+    line-height: 1.2;
+    font-size: 0.8rem;
+    color: white;
+    text-align: justify;
+  }
+}
+
+.register-title {
+    font-weight: bold;
+    margin: auto;
+    margin-top: 10px;
+    color: #0070d1;
+}

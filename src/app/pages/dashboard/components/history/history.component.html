@@ -1,0 +1,100 @@
+
+<mat-card>
+    <mat-card-title fxLayout="row"
+                    fxLayoutGap="5px">
+        <strong>
+            {{'HISTORY' | translate}}
+        </strong>
+        
+    </mat-card-title>
+
+    <ng-container *ngIf="historyLocationRecords.length > 0; else emptyFav">
+
+        <!-- Columns -->
+        <mat-card-content fxLayout="column"
+                          fxLayoutAlign="start start"
+                          class="w-100">
+
+            <div ngClass.lt-sm="records-container"
+                 ngClass.gt-sm="records-container-gt-sm"
+                 class="history-row">
+
+                <div fxLayout="row"
+                     fxLayoutGap="10px"
+                    fxLayoutAlign="space-between center">
+
+                    <div fxFlex="calc(30px)"></div>
+
+                    <h2 *ngFor="let column of columns"
+                        fxFlex="calc(30% - 10px)">
+                        {{column | translate}}
+                    </h2>
+
+                </div>
+
+                <div fxLayout="column"
+                     fxLayoutGap="10px"
+                     *ngFor="let location of historyLocationRecords; let i=index">
+    
+                     <div fxLayout="row"
+                          fxLayoutAlign="space-between center"
+                          fxLayoutGap="10px"
+                          class="pointer history-record"
+                          matTooltip="{{'VIEW_WEATHER' | translate}}"
+                          (click)="getLocationData(location)">
+
+                        <img src="{{location.location.location_logo ? 
+                                    location.location.location_logo :
+                                    noLocation}}" 
+                            fxFlex="30px"
+                            class="country-logo">                        
+    
+                        <strong fxFlex="calc(30% - 10px)">
+                            {{location.location.name}}
+                        </strong>   
+    
+                        <strong fxFlex="calc(30% - 10px)">
+                            {{location.location.region}}
+                        </strong>   
+
+                        <div fxLayout="row"
+                             fxLayoutGap="10px"
+                             fxFlex="calc(30% - 10px)">
+
+                            <strong>
+                                {{location.location.country}}
+                            </strong>
+                            
+                            <img src="assets/icons/delete.svg"
+                                 width="20px"
+                                 class="pointer"
+                                 matTooltip="{{'DELETE' | translate}}"
+                                 (click)="deleteFav(i)"
+                                 *ngIf="location?.defaultRecord === false">
+                        </div>
+    
+                     </div>
+    
+                </div>
+
+            </div>
+
+
+        </mat-card-content>
+        
+    </ng-container>
+    <ng-template #emptyFav>
+
+        <mat-card-content fxLayout="row"
+                          fxLayoutAlign="center center"
+                          class="w-100 mt-m20 empty-container">
+        
+            <span class="fs-20px">
+                {{'ADD_HISTORY' | translate}}
+            </span>
+        
+        </mat-card-content>
+        
+    </ng-template>
+        
+</mat-card>

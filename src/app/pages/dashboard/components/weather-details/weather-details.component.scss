@@ -1,0 +1,24 @@
+
+.temp {
+    position: relative;
+    top: -17px;
+    left: -5px;
+}
+
+.v-mid-separator,
+.v-big-separator {
+    width: 4px;
+    border-radius: 5px;
+    height: 32px;
+    background-color: #c9c9c9;
+    margin-top: -7px;
+    margin-right: 12px !important;
+}
+
+.v-big-separator {
+    height: 42px;
+}
+
+.no-register {
+    height: 68px;
+}

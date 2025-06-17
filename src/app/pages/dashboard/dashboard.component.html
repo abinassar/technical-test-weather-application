@@ -1,0 +1,76 @@
+
+<mat-drawer-container>
+    <mat-drawer #drawer [mode]="'side'">
+        <app-template-sidenav></app-template-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+
+        <mat-toolbar color="primary">
+        <mat-toolbar-row fxLayout="row"
+                        fxLayoutAlign="space-between center">
+
+            <div fxLayout="row"
+                    fxLayoutAlign="center center">
+
+                    <button mat-icon-button
+                            (click)="drawer.toggle()">
+                        <img src="assets/icons/menu.svg"
+                            width="20px">
+                    </button>
+        
+                    <h2 class="bold white">{{'APP_NAME' | translate}}</h2>
+            </div>
+
+            <div fxLayout="row">
+
+                 <button mat-icon-button
+                         [matMenuTriggerFor]="menu"
+                         matTooltip="{{'CHANGE_LANGUAGE' | translate}}">
+                     <img src="assets/icons/language.svg"
+                         width="20px">
+                 </button>
+
+                 <button mat-icon-button
+                         matTooltip="{{'SIGN_OUT' | translate}}"
+                         (click)="signOut()">
+                     <img src="assets/icons/logout.svg"
+                          width="20px">
+                 </button>
+                 
+            </div>
+
+            <mat-menu #menu="matMenu">
+            <button mat-menu-item
+                    (click)="changeLang(true)">
+                <img src="assets/icons/spanish.svg"
+                    width="20px"
+                    class="lang-icon">
+                <span> {{'SPANISH' | translate}} </span>
+            </button>
+            
+            <button mat-menu-item
+                    (click)="changeLang(false)">
+                <img src="assets/icons/english.png"
+                    width="20px"
+                    class="lang-icon">
+                <span> {{'ENGLISH' | translate}} </span>
+            </button>
+            </mat-menu>
+
+        </mat-toolbar-row>
+        </mat-toolbar>
+
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
+
+        <footer fxLayout="row"
+                fxLayoutAlign="space-between center"
+                class="footer">
+
+            <span>Gianfranco Abinassar / FullStack Developer.</span>
+            <span>v1.0.0</span>
+
+        </footer>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,15 @@
+
+:host::ng-deep {
+  .mat-toolbar-multiple-rows {
+    min-height: 40px !important;
+  }
+}
+
+.sign-header {
+  height: 30px;
+  background-color: transparent;
+  h1 {
+    color: #2a2a2a;
+    font-size: 2rem;
+  }
+}

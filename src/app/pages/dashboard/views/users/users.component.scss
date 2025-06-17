@@ -1,0 +1,24 @@
+:host::ng-deep {
+    .table-title {
+
+        .mat-icon-button {
+            width: 30px;
+            height: 30px;
+        }
+
+        .mat-icon-button {
+            color: inherit;
+            background: #0093e1;
+        }
+
+        img {
+            position: relative;
+            top: -5px;
+        }
+    }
+}
+
+.container {
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+}

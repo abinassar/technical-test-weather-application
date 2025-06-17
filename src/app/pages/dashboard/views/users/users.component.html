@@ -1,0 +1,23 @@
+
+<div fxLayout="row"
+     fxLayoutGap="10px"
+     class="table-title">
+
+  <h1>
+    {{'USERS' | translate}}
+  </h1>
+
+  <button mat-icon-button
+          (click)="getUsers()"
+          class="refresh-button"
+          matTooltip="{{'GET_USERS' | translate}}">
+      <img src="assets/icons/refresh.svg"
+          width="20px">                            
+  </button>
+
+</div>
+
+<app-template-table [columnsTags]="tableColumnsTags"
+                [columnsToDisplay]="tableColumnsToDisplay"
+                [data]="tableData"
+                [showSelectColumn]="false"></app-template-table>

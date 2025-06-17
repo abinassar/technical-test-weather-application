@@ -1,0 +1,100 @@
+
+<div fxLayout.gt-xs="row"
+        fxLayout="column"
+        fxLayout="column"
+        fxLayoutGap="10px">
+
+    <div fxLayout.gt-xs="column"
+            fxFlex="calc(60% - 10px)"
+            fxLayoutGap="5px">
+
+        <div fxLayout="row"
+                fxLayoutGap="10px">
+
+            <form [formGroup]="weatherForm">
+
+                <div [ngStyle]="{'font-size': '9px'}">
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{'CITY' | translate}}</mat-label>
+                        <input type="text"
+                                placeholder="Ex. Amsterdam"
+                                matInput
+                                formControlName="searchInput"
+                                [matAutocomplete]="searchAutoComplete">
+
+                        <button *ngIf="searchClue && searchClue !== ''" 
+                                matSuffix 
+                                mat-icon-button 
+                                aria-label="Clear" 
+                                (click)="weatherForm.get('searchInput')?.setValue('')">
+                            <img src="assets/icons/close.svg"
+                                width="20px"
+                                class="mt-m10">                            
+                        </button>
+                        
+                        <mat-autocomplete autoActiveFirstOption 
+                                        #searchAutoComplete="matAutocomplete">
+                            <mat-option *ngFor="let cityOption of filteredCitiesOptions" 
+                                        [value]="cityOption">
+                                {{ cityOption }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+
+            </form>
+
+            <button mat-raised-button
+                    (click)="searchWeather()"
+                    class="small-button"
+                    [disabled]="weatherForm.invalid"
+                    color="primary">
+                {{'SEARCH' | translate}}
+            </button>
+
+            <button mat-raised-button
+                    (click)="updateUser()"
+                    class="small-button"
+                    color="primary">
+                {{'SAVE_USER_INFO' | translate}}
+            </button>
+        </div>
+
+        <app-weather-details [locationWeather]="locationWeather"
+                             fxFlex.gt-xs="0 1 calc(145px)"
+                             (saveOnHistory)="saveOnHistory()"></app-weather-details>
+
+        <div fxLayout="row"
+                fxFlex.gt-xs="0 1 calc(100% - 80px)"
+                fxLayoutGap="5px">
+
+            <div fxFlex="calc(50% - 5px)"
+                 fxLayout="column"
+                 fxLayoutGap="5px">
+
+                <app-timezone-list [locationTimeZone]="locationTimeZone"
+                                    [timeZoneList]="timeZoneList"
+                                    (locationTime)="getLocationTimeZone($event)"
+                                    fxFlex="calc(100% - 215px)"></app-timezone-list>
+    
+                <app-location-time [locationTime]="locationTime"
+                                   [locationZoneName]="locationZoneName"
+                                   fxFlex="110px"></app-location-time>                               
+
+            </div>
+
+
+            <app-pending-tasks fxFlex="calc(50% - 5px)"
+                                [(pendingTasks)]="pendingTasks"></app-pending-tasks>
+
+        </div>
+
+
+    </div>
+
+    <div fxFlex.gt-xs="0 1 calc(40% - 10px)">
+        <app-history [historyLocationRecords]="historyLocationRecords"
+                     (getLocationWeather)="getLocationData($event)"></app-history>
+    </div>
+
+</div>

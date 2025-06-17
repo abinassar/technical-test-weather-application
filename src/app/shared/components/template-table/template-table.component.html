@@ -1,0 +1,156 @@
+<ng-container *ngIf="!showSkeleton">
+  <table
+    mat-table
+    #table
+    [dataSource]="dataSource"
+    [@fadeIn]
+    class="w-100 mat-elevation-z1"
+  >
+    <div *ngFor="let column of columnsToDisplay; let columnIndex = index">
+      <ng-container [matColumnDef]="column">
+        <!-- Checkbox column definition  -->
+
+        <div *ngIf="column === 'select'">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox
+              (change)="$event ? masterToggle() : null"
+              [checked]="selection.hasValue() && isAllSelected()"
+              [indeterminate]="selection.hasValue() && !isAllSelected()"
+              color="primary"
+            >
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let element; let index = index">
+            <mat-checkbox
+              color="primary"
+              (click)="$event.stopPropagation()"
+              (change)="selectRow($event, element, index)"
+              [checked]="selection.isSelected(element)"
+            >
+            </mat-checkbox>
+          </td>
+        </div>
+
+        <!-- Another columns -->
+
+        <div
+          *ngIf="
+            column !== 'select' && column !== 'actions' && column !== 'view'
+          "
+        >
+          <th mat-header-cell *matHeaderCellDef>
+            <div>
+              <span mat-sort-header>
+                {{ column | translate}}
+              </span>
+            </div>
+          </th>
+
+          <span [ngSwitch]="">
+            <p *ngSwitchCase="true"></p>
+            <p *ngSwitchCase="false"></p>
+            <p *ngSwitchDefault></p>
+          </span>
+
+          <td mat-cell *matCellDef="let element; let rowIndex = index">
+            <div [ngSwitch]="getType(element[columnsTags[columnIndex]])">
+              <span *ngSwitchCase="'boolean'">
+                {{ element[columnsTags[columnIndex]] | active }}
+              </span>
+              <span *ngSwitchCase="'array'">
+                <mat-select
+                  placeholder="test"
+                  (selectionChange)="selectionChange(element, $event, rowIndex)"
+                  multiple
+                  #multipleSelect
+                >
+                  <mat-option
+                    *ngFor="let option of element[columnsTags[columnIndex]]"
+                    [value]="option"
+                    class="multiple-select"
+                  >
+                    {{ option.name }}
+                  </mat-option>
+                </mat-select>
+              </span>
+              <span *ngSwitchDefault>
+                <!-- {{element[columnsTags[columnIndex]]}} -->
+                <ng-container
+                  *ngIf="
+                    element[columnsTags[columnIndex]]?.mask;
+                    else defaultContent
+                  "
+                >
+                  {{
+                    maskService.applyMask(
+                      element[columnsTags[columnIndex]].value,
+                      element[columnsTags[columnIndex]].mask
+                    )
+                  }}
+                  {{ element[columnsTags[columnIndex]].suffix }}
+                </ng-container>
+                <ng-template #defaultContent>
+                  {{ element[columnsTags[columnIndex]] }}
+                </ng-template>
+              </span>
+            </div>
+          </td>
+        </div>
+
+        <div *ngIf="column === 'actions'">
+          <th mat-header-cell *matHeaderCellDef>
+            <div>
+              <span mat-sort-header> </span>
+            </div>
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element; let index = index"
+            style="text-align: end"
+          >
+            <button mat-icon-button (click)="editRow(index)">
+              <mat-icon class="mat-18">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteRow(index)">
+              <mat-icon class="mat-18">delete</mat-icon>
+            </button>
+          </td>
+        </div>
+
+        <div *ngIf="column === 'view'">
+          <th mat-header-cell *matHeaderCellDef>
+            <div>
+              <span mat-sort-header> </span>
+            </div>
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element; let index = index"
+            style="text-align: end"
+          >
+            <button mat-icon-button (click)="seeRow(index)">
+              <mat-icon class="mat-18">visibility</mat-icon>
+            </button>
+          </td>
+        </div>
+      </ng-container>
+    </div>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    class="mat-elevation-z1"
+  ></mat-paginator>
+</ng-container>
+
+<div *ngIf="showSkeleton">
+  <ngx-skeleton-loader
+    [count]="skeletonRowNumber"
+    [theme]="{ background: 'var(--bgSecondaryColor)' }"
+    [@fadeIn]
+  ></ngx-skeleton-loader>
+</div>

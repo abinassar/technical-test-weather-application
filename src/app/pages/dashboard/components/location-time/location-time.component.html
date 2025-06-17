@@ -1,0 +1,34 @@
+
+<mat-card class="card-height">
+    <mat-card-title fxLayout="row"
+                    fxLayoutGap="10px">
+        <strong>
+            Hora
+        </strong>
+        <p>
+            {{locationZoneName}}
+        </p>
+    </mat-card-title>
+    <ng-container *ngIf="locationTime === 'SELECT_A_LOCATION'; else elseTemplate">
+
+        <mat-card-content fxLayout="row"
+                        fxLayoutAlign="center center"
+                        class="w-100 h-100 mt-m20">
+        
+            <span class="fs-20px">
+                {{locationTime | translate}}
+            </span>
+        
+        </mat-card-content>
+    </ng-container>
+    <ng-template #elseTemplate>
+
+        <mat-card-content fxLayout="row"
+                          fxLayoutAlign="center center">
+            <span class="local-time">
+                {{locationTime | dateFormatter}}
+            </span>
+        </mat-card-content>
+
+    </ng-template>
+</mat-card>

@@ -1,0 +1,27 @@
+:host::ng-deep {
+    .mat-toolbar-row, .mat-toolbar-single-row,
+    .mat-toolbar-multiple-rows {
+        height: 40px !important;
+        min-height: 40px;
+    }
+
+    .mat-form-field-wrapper {
+        padding-bottom: 0px;
+    }
+}
+
+.container {
+    height: calc(100vh - 90px);
+    padding: 10px 10px 5px;
+    overflow-y: auto;
+}
+
+.footer {
+    padding: 6px 15px;
+    color: #2a2a2a;
+}
+
+.lang-icon {
+    position: relative;
+    top: 5px;
+}

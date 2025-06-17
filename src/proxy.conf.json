@@ -1,0 +1,10 @@
+{
+  "/tz": {
+    "target": "https://api.timezonedb.com",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/tz": ""
+    }
+  }
+}

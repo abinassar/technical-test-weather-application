@@ -1,0 +1,43 @@
+
+:host ::ng-deep {
+    h2 {
+        margin-bottom: 0px;
+    }
+}
+
+.empty-container {
+    height: calc(100vh - 129px);
+}
+
+.history-row {
+    padding: 0px 0px 10px;
+    width: 100%;
+}
+
+.records-container-gt-sm,
+.records-container {
+    height: calc(100vh - 149px);
+    overflow-y: auto;
+}
+
+.records-container {
+    height: 300px;
+}
+
+.history-record {
+    padding: 8px 4px;
+    margin: 5px 5px 5px 0;
+}
+
+.history-record:hover {
+    background-color: #dcdcdc;
+    transition: background-color 0.3s ease-in;
+    border-radius: 5px;
+}
+
+.country-logo {
+    border-radius: 50%;
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+}
