@@ -30,12 +30,12 @@ export class TimezoneService {
    */
   getTimeZoneList(countryCode: string): Observable<TimeZoneList> {
     return this.httpClient
-               .get<TimeZoneList>(`/tz/v2.1/list-time-zone?key=${environment.timezoneAPIKey}&format=json&country=${countryCode}`)
+               .get<TimeZoneList>(`${environment.timezoneUrl}/list-time-zone?key=${environment.timezoneAPIKey}&format=json&country=${countryCode}`)
   }
 
-  getTimeZone(zoneId: string): Observable<LocationTimeZone> {
+  getTimeZone(zone: string): Observable<LocationTimeZone> {
     return this.httpClient
-               .get<LocationTimeZone>(`/tz/v2.1/get-time-zone?key=${environment.timezoneAPIKey}&format=json&by=zone&zone=${zoneId}`)
+               .get<LocationTimeZone>(`${environment.timezoneUrl}/get-time-zone?key=${environment.timezoneAPIKey}&format=json&by=zone&zone=${zone}`)
   }
 
 }
