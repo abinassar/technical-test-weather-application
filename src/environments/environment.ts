@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  // apiUrl: 'http://localhost:8080',
+  apiUrl: 'https://backend-technical-test-weather-application-production.up.railway.app',
   weatherUrl: 'https://api.weatherapi.com/v1',
   timezoneUrl: 'https://api.timezonedb.com/v2.1',
   weatherAPIKey: '2e5509c051af40d4a1b214224252002',

@@ -56,13 +56,10 @@ export class SignInComponent {
   hidePassword = true;
   showSpinner = false;
 
-  hello = this.translate.instant("NOT_AUTHORIZED")
-
   constructor(public auth: AuthService,
     private readonly router: Router,
     private toastService: ToastService,
     private localService: LocalService,
-    private translate: TranslateService,
     private crypto: CryptoService) {
     this.localService.clearLocalStorage();
   }

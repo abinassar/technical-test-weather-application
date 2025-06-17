@@ -34,6 +34,6 @@ export class TokenService {
   }
 
   clearToken() {
-    sessionStorage.removeItem(TOKEN_KEY);
+    this.sessionService.removeItem(TOKEN_KEY);
   }
 }
